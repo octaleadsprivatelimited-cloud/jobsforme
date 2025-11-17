@@ -65,6 +65,11 @@ const ComingSoon = () => {
 
       {/* Main Content */}
       <div className="container">
+        {/* Header */}
+        <header className="header">
+          <h1 className="website-name">Jobs For Me</h1>
+        </header>
+
         {/* Main Section */}
         <main className="main-content">
           <div className="content-wrapper">
@@ -74,7 +79,7 @@ const ComingSoon = () => {
                 Revolutionizing Career Opportunities with <span className="gradient-text">AI</span>
               </h2>
               <p className="subtitle">
-                Jobs for me is an AI-driven job portal that connects talent with innovation.
+                Launching India's 1st Part-Time Job Platform
               </p>
 
               {/* Countdown Timer - Mobile Only */}

@@ -69,7 +69,6 @@ const ComingSoon = () => {
         <header className="header">
           <div className="logo-container">
             <img src="/logo.jpeg" alt="Jobs For Me Logo" className="logo-image" />
-            <h1 className="website-name">Jobs For Me</h1>
           </div>
         </header>
 

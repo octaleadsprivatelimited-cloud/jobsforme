@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
@@ -11,7 +12,10 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files from React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+const staticPath = path.join(__dirname, 'client/build');
+if (fs.existsSync(staticPath)) {
+  app.use(express.static(staticPath));
+}
 
 // API routes
 app.get('/api/health', (req, res) => {
@@ -20,7 +24,12 @@ app.get('/api/health', (req, res) => {
 
 // Catch all handler: send back React's index.html file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
+  const indexPath = path.join(__dirname, 'client/build/index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(404).json({ error: 'Build files not found. Please build the React app first.' });
+  }
 });
 
 app.listen(PORT, () => {
